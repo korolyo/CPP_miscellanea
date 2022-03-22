@@ -2,6 +2,8 @@
 NAME		= phonebook
 
 SOURCES_LIST	= main.cpp\
+					Contact.cpp\
+					PhoneBook.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98
