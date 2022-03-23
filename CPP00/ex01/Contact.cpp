@@ -1,23 +1,62 @@
 #include <iostream>
+#include "Contact.hpp"
 
-int main()
+void	Contact::setIndex(int index_num)
 {
-	std::string	str;
+	Contact::index = index_num;
+}
 
-	PhoneBook phoneBook = new PhoneBook();
-	std::cout << "Enter one of three commands: ADD, SEARCH, EXIT" << std::endl;
-	std::cin >> str;
-	while (1)
-	{
-		if (str.compare("ADD") == 0)
-			std::cout << "Adding" << std::endl;
-		if (str.compare("SEARCH") == 0)
-			std::cout << "Searching" << std::endl;
-		if (str.compare("EXIT") == 0)
-		{
-			std::cout << "Exiting" << std::endl;
-			phoneBook.exiting();
-		}
-	}
-	return (0);
+void	Contact::setFirstName(std::string firstN)
+{
+	Contact::firstName = firstN;
+}
+
+void	Contact::setLastName(std::string lastN)
+{
+	Contact::lastName = lastN;
+}
+
+void	Contact::setNickname(std::string nickn)
+{
+	Contact::nickname = nickn;
+}
+
+void	Contact::setPhoneNumber(std::string phoneN)
+{
+	Contact::phoneNumber = phoneN;
+}
+
+void	Contact::setDarkestSecret(std::string secret)
+{
+	Contact::darkestSecret = secret;
+}
+
+int	Contact::getIndex(void)
+{
+	return (Contact::index);
+}
+
+std::string	Contact::getFirstName(void)
+{
+	return (Contact::firstName);
+}
+
+std::string	Contact::getLastName(void)
+{
+	return (Contact::lastName);
+}
+
+std::string	Contact::getNickname(void)
+{
+	return (Contact::nickname);
+}
+
+std::string	Contact::getPhoneNumber(void)
+{
+	return (Contact::phoneNumber);
+}
+
+std::string	Contact::getDarkestSecret(void)
+{
+	return (Contact::darkestSecret);
 }

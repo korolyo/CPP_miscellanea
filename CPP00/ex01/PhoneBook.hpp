@@ -1,15 +1,24 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+#include "Contact.hpp"
+
 class	PhoneBook
 {
 private:
-	Contacts	contacts[8];
-	int			num_of_contacts;
+	int		numOfContacts;
+	int		counter;
+	Contact	contacts[8];
 public:
-	void	add();
-	void	search();
-	void	exit();
+	void	add(void);
+	void	search(void);
+	void	exiting(void);
+	void	setNumOfContacts(int num);
+	int		getNumOfContacts(void);
+	void	setCounter(int num);
+	int		getCounter(void);
+//	PhoneBook();
+//	~PhoneBook();
 };
 
 # endif

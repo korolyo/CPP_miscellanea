@@ -1,7 +1,7 @@
 
 NAME		= phonebook
 
-SOURCES_LIST	= main.cpp\
+SOURCES_LIST	=	main.cpp\
 					Contact.cpp\
 					PhoneBook.cpp\
 
@@ -10,8 +10,9 @@ CFLAGS	=	-Werror -Wall -Wextra -std=c++98
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST = \
-HEADERS_DIR	=  \
+HEADERS_LIST =	Contact.hpp\
+				PhoneBook.hpp\
+HEADERS_DIR	=  .\
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))

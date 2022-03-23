@@ -1,27 +1,36 @@
 #include <iostream>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 void PhoneBook::add(void)
 {
-	std::string	first_name;
-	std::string	last_name;
+	std::string	firstName;
+	std::string	lastName;
 	std::string	nickname;
-	std::string	phone_number;
-	std::string	darkest_secret;
-	int 		index;
+	std::string	phoneNumber;
+	std::string	darkestSecret;
 
-	index = 1
-	Contact contact = Contact(index);
+	if (PhoneBook::getNumOfContacts() <= 8)
+		PhoneBook::setNumOfContacts(PhoneBook::getNumOfContacts() + 1);
+	if (PhoneBook::getCounter() == 8)
+		PhoneBook::setCounter(7);
 	std::cout << "Please, enter the information of the new contact\n";
 	std::cout << "First name:\n";
-	std::coutstd::cin >> contact.first_name;
+	std::cin >> firstName;
+	PhoneBook::contacts[PhoneBook::getCounter()].setFirstName(firstName);
 	std::cout << "Last name:\n";
-	std::coutstd::cin >> contact.last_name;
+	std::cin >> lastName;
+	PhoneBook::contacts[PhoneBook::getCounter()].setLastName(lastName);
 	std::cout << "Nickname:\n";
-	std::coutstd::cin >> contact.nickname;
+	std::cin >> nickname;
+	PhoneBook::contacts[PhoneBook::getCounter()].setNickname(nickname);
 	std::cout << "Phone number:\n";
-	std::coutstd::cin >> contact.phone_number;
+	std::cin >> phoneNumber;
+	PhoneBook::contacts[PhoneBook::getCounter()].setPhoneNumber(phoneNumber);
 	std::cout << "And your darkest secret, please:\n";
-	std::coutstd::cin >> contact.darkest_secret;
+	std::cin >> darkestSecret;
+	PhoneBook::contacts[PhoneBook::getCounter()].setDarkestSecret(darkestSecret);
+	PhoneBook::setCounter(PhoneBook::getCounter() + 1);
 }
 
 void PhoneBook::search(void)
@@ -29,22 +38,75 @@ void PhoneBook::search(void)
 	int i;
 
 	i = 0;
-	std::cout << "|__Index___|_First_name_|_Last_name|_Nickname_|__Phone___|;
-	std::cout << "_Dark_secret_|" << std::endl
-	while (i < PhoneBook.num_of_contacts)
+	std::cout << "+------------+-------------";
+	std::cout << "+------------+-------------+" << std::endl;
+	std::cout << "|   Index    |  First name ";
+	std::cout << "|  Last name |  Nickname   |" << std::endl;
+	std::cout << "+------------+-------------";
+	std::cout << "+------------+-------------+" << std::endl;
+	while (i < PhoneBook::getNumOfContacts())
 	{
-		std::cout << "|     " << contact[i].index << " |";
-		std::cout << " " << contact[i].first_name << " |";
-		std::cout << " " << contact[i].last_name << " |";
-		std::cout << " " << contact[i].nickname << " |";
-		std::cout << " " << contact[i].phone_number << " |";
-		std::cout << " " << contact[i].darkest_secret << " |" << std::endl;
+		std::cout << "| " << contacts[i].getIndex() << " | ";
+		std::cout << " " << contacts[i].getFirstName() << " | ";
+		std::cout << " " << contacts[i].getLastName() << " | ";
+		std::cout << " " << contacts[i].getNickname() << " |" << std::endl;
 		i++;
 	}
+	std::cout << "+------------+-------------";
+	std::cout << "+------------+-------------+" << std::endl;
+	std::cout << "Pick the index, please" << std::endl;
+	while (i == 0)
+	{
+		std::cin >> i;
+		if (i > PhoneBook::getNumOfContacts())
+		{
+			std::cout << "Chose the right one (from 1, to ";
+			std::cout << PhoneBook::getNumOfContacts() << "), please" << std::endl;
+			i = 0;
+		}
+	}
+	std::cout << "Id: " << contacts[i].getIndex() << std::endl;
+	std::cout << "Phone number: " << contacts[i].getPhoneNumber() << std::endl;
+	std::cout << "First name: " << contacts[i].getFirstName() << std::endl;
+	std::cout << "Last name: " << contacts[i].getLastName() << std::endl;
+	std::cout << "Nickname: " << contacts[i].getNickname() << std::endl;
+	std::cout << "Darkest secret: " << contacts[i].getDarkestSecret() <<
+	std::endl;
 }
 
-void PhoneBook::exit(void)
+void PhoneBook::exiting(void)
 {
+//	PhoneBook::~PhoneBook();
 	std::cout << "exit\n";
-	exit(1);
+	std::exit(1);
 }
+
+//PhoneBook::~PhoneBook()
+//{
+//	delete PhoneBook::contacts;
+//}
+
+void	PhoneBook::setNumOfContacts(int num)
+{
+	PhoneBook::numOfContacts = num;
+}
+
+int		PhoneBook::getNumOfContacts(void)
+{
+	return (PhoneBook::numOfContacts);
+}
+
+void	PhoneBook::setCounter(int num)
+{
+	PhoneBook::counter = num;
+}
+
+int		PhoneBook::getCounter(void)
+{
+	return (PhoneBook::counter);
+}
+//
+//PhoneBook::PhoneBook()
+//{
+//	setNumOfContacts(0);
+//}
