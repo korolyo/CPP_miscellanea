@@ -1,18 +1,17 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-class	Zombie
+class	Weapon
 {
 private:
-	std::string	name;
+	std::string	type;
 
 public:
-	void		setName(std::string name);
-	std::string	getName();
-	void		announce(void);
-	~Zombie();
+	void		setType(std::string type);
+	std::string	getType(void);
+	Weapon();
+	Weapon(std::string type);
+	~Weapon();
 };
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 
 # endif

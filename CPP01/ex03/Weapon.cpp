@@ -1,22 +1,21 @@
 #include <iostream>
 #include "Weapon.hpp"
 
-void	Zombie::setName(std::string name)
+void	Weapon::setType(std::string type)
 {
-	Zombie::name = name;
+	Weapon::type = type;
 }
 
-std::string	Zombie::getName(void)
+std::string	Weapon::getType(void)
 {
-	return (Zombie::name);
+	return (Weapon::type);
 }
 
-void	Zombie::announce(void)
+Weapon::Weapon(std::string type)
 {
-	std::cout << Zombie::getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	Weapon::setType(type);
 }
 
-Zombie::~Zombie()
-{
-	std::cout << Zombie::getName() << ":  Dead... Again.. Arhh.." << std::endl;
-}
+Weapon::~Weapon() { }
+
+Weapon::Weapon() { }

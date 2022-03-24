@@ -1,22 +1,38 @@
 #include <iostream>
 #include "HumanB.hpp"
 
-void	Zombie::setName(std::string name)
+#include "Weapon.hpp"
+
+HumanB::HumanB() { }
+HumanB::~HumanB() { }
+
+HumanB::HumanB(std::string name)
 {
-	Zombie::name = name;
+	setName(name);
 }
 
-std::string	Zombie::getName(void)
+void	HumanB::setName(std::string name)
 {
-	return (Zombie::name);
+	this->name = name;
 }
 
-void	Zombie::announce(void)
+std::string	HumanB::getName(void)
 {
-	std::cout << Zombie::getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	return (name);
 }
 
-Zombie::~Zombie()
+void	HumanB::setWeapon(Weapon weapon)
 {
-	std::cout << Zombie::getName() << ":  Dead... Again.. Arhh.." << std::endl;
+	this->weapon = &weapon;
+}
+
+Weapon	HumanB::getWeapon(void)
+{
+	return (*weapon);
+}
+
+void	HumanB::attack()
+{
+	std::cout << this->name << " attacks with their ";
+	std::cout << this->weapon->getType() << std::endl;
 }

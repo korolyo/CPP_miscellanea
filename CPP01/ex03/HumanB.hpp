@@ -1,18 +1,23 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-class	Zombie
+# include "Weapon.hpp"
+
+class	HumanB
 {
 private:
 	std::string	name;
+	Weapon		*weapon;
 
 public:
 	void		setName(std::string name);
 	std::string	getName();
-	void		announce(void);
-	~Zombie();
+	void		setWeapon(Weapon weapon);
+	Weapon		getWeapon();
+	void		attack();
+	HumanB(std::string name);
+	~HumanB();
+	HumanB();
 };
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 
 # endif
