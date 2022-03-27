@@ -1,62 +1,67 @@
 #include <iostream>
 #include "Contact.hpp"
 
+Contact::Contact() { }
+Contact::~Contact() {
+	std::cout << "Destructor Contact\n";
+}
+
 void	Contact::setIndex(int index_num)
 {
-	Contact::index = index_num;
+	_index = index_num;
 }
 
 void	Contact::setFirstName(std::string firstN)
 {
-	Contact::firstName = firstN;
+	_firstName = firstN;
 }
 
 void	Contact::setLastName(std::string lastN)
 {
-	Contact::lastName = lastN;
+	_lastName = lastN;
 }
 
 void	Contact::setNickname(std::string nickn)
 {
-	Contact::nickname = nickn;
+	_nickname = nickn;
 }
 
 void	Contact::setPhoneNumber(std::string phoneN)
 {
-	Contact::phoneNumber = phoneN;
+	_phoneNumber = phoneN;
 }
 
 void	Contact::setDarkestSecret(std::string secret)
 {
-	Contact::darkestSecret = secret;
+	_darkestSecret = secret;
 }
 
 int	Contact::getIndex(void)
 {
-	return (Contact::index);
+	return (_index);
 }
 
 std::string	Contact::getFirstName(void)
 {
-	return (Contact::firstName);
+	return (_firstName);
 }
 
 std::string	Contact::getLastName(void)
 {
-	return (Contact::lastName);
+	return (_lastName);
 }
 
 std::string	Contact::getNickname(void)
 {
-	return (Contact::nickname);
+	return (_nickname);
 }
 
 std::string	Contact::getPhoneNumber(void)
 {
-	return (Contact::phoneNumber);
+	return (_phoneNumber);
 }
 
 std::string	Contact::getDarkestSecret(void)
 {
-	return (Contact::darkestSecret);
+	return (_darkestSecret);
 }

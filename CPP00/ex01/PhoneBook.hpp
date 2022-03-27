@@ -6,19 +6,24 @@
 class	PhoneBook
 {
 private:
-	int		numOfContacts;
-	int		counter;
-	Contact	contacts[8];
+	int		_numOfContacts;
+	int		_counter;
+	Contact	_contacts[8];
 public:
-	void	add(void);
-	void	search(void);
-	void	exiting(void);
 	void	setNumOfContacts(int num);
 	int		getNumOfContacts(void);
 	void	setCounter(int num);
 	int		getCounter(void);
-//	PhoneBook();
-//	~PhoneBook();
+	void	setContacts(Contact contact, int index);
+	Contact	*getContacts(void);
+
+	void	add(void);
+	void	search(void);
+	void	exiting(void);
+	void	printInfo();
+	PhoneBook();
+	PhoneBook(Contact contacts);
+	~PhoneBook();
 };
 
 # endif

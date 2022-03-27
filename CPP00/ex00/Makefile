@@ -4,13 +4,7 @@ NAME		= megaphone
 SOURCES_LIST	= megaphone.cpp\
 
 CC		= c++
-CFLAGS	=	-Werror -Wall -Wextra -std=c++98
-
-INCLUDES = -I$(HEADERS_DIR)
-
-HEADERS_LIST = \
-HEADERS_DIR	=  \
-HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
+CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))
 
@@ -22,8 +16,7 @@ $(NAME): $(OBJECTS)
 		$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
-
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		@rm -f $(OBJECTS)

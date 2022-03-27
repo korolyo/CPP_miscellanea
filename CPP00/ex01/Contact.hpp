@@ -4,12 +4,12 @@
 class	Contact
 {
 private:
-	int			index;
-	std::string	firstName;
-	std::string	lastName;
-	std::string nickname;
-	std::string	phoneNumber;
-	std::string	darkestSecret;
+	int			_index;
+	std::string	_firstName;
+	std::string	_lastName;
+	std::string _nickname;
+	std::string	_phoneNumber;
+	std::string	_darkestSecret;
 
 public:
 	void		setIndex(int index_num);
@@ -25,6 +25,7 @@ public:
 	std::string	getPhoneNumber(void);
 	std::string	getDarkestSecret(void);
 	Contact();
+	~Contact();
 };
 
 # endif

@@ -6,7 +6,7 @@ SOURCES_LIST	=	main.cpp\
 					PhoneBook.cpp\
 
 CC		= c++
-CFLAGS	=	-Werror -Wall -Wextra -std=c++98
+CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
