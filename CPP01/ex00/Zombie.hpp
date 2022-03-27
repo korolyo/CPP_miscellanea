@@ -1,5 +1,5 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 class	Zombie
 {

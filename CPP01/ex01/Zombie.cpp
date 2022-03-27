@@ -3,20 +3,20 @@
 
 void	Zombie::setName(std::string name)
 {
-	Zombie::name = name;
+	_name = name;
 }
 
 std::string	Zombie::getName(void)
 {
-	return (Zombie::name);
+	return (_name);
 }
 
 void	Zombie::announce(void)
 {
-	std::cout << Zombie::getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << getName() << ":  BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << Zombie::getName() << ":  Dead... Again.. Arhh.." << std::endl;
+	std::cout << getName() << ":  Dead... Again.. Arhh.." << std::endl;
 }
