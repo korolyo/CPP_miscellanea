@@ -56,7 +56,6 @@ dkms.conf
 *.tmp
 .DS_Store
 *.d
-miniRT
 libft.a
 ./build/
 .vscode*
