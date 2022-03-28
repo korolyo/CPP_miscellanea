@@ -1,5 +1,5 @@
 
-NAME		=
+NAME		=	base
 
 SOURCES_LIST	=	main.cpp\
 

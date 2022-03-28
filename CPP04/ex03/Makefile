@@ -1,5 +1,5 @@
 
-NAME		=
+NAME		= Recap
 
 SOURCES_LIST	=	main.cpp\
 

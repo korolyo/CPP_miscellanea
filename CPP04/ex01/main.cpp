@@ -2,6 +2,12 @@
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+
+	delete j;//should not create a leak
+	delete i;
+	...
+
 	return 0;
 }

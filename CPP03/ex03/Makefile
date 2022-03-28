@@ -1,14 +1,22 @@
 
-NAME		=
+NAME		= diamond
 
 SOURCES_LIST	=	main.cpp\
+					ClapTrap.cpp\
+					ScavTrap.cpp\
+					FlagTrap.cpp\
+					DiamondTrap.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =	ClapTrap.hpp\
+				ScavTrap.hpp\
+				FlagTrap.hpp\
+				DiamondTrap.hpp\
+
 HEADERS_DIR	=  .\
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

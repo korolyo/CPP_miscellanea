@@ -1,5 +1,5 @@
 
-NAME		=
+NAME		= serialization
 
 SOURCES_LIST	=	main.cpp\
 

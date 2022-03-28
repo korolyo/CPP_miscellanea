@@ -1,14 +1,18 @@
 
-NAME		=
+NAME		= serena
 
 SOURCES_LIST	=	main.cpp\
+					ClapTrap.cpp\
+					ScavTrap.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =	ClapTrap.hpp\
+				ScavTrap.hpp\
+
 HEADERS_DIR	=  .\
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

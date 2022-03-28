@@ -1,7 +1,8 @@
-#include <iostream>
+#include "ClapTrap.hpp"
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	ClapTrap	clap1;
+	ClapTrap	clap2;
 	return 0;
 }

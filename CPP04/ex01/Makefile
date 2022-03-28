@@ -1,14 +1,21 @@
 
-NAME		=
+NAME		= brain
 
 SOURCES_LIST	=	main.cpp\
+					Animal.cpp\
+					Cat.cpp \
+					Dog.cpp \
+					Brain.cpp \
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =		Animal.hpp\
+              		Cat.hpp \
+              		Dog.hpp \
+              		Brain.Hpp \
 HEADERS_DIR	=  .\
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

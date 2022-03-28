@@ -1,5 +1,5 @@
 
-NAME		=
+NAME		= scalar
 
 SOURCES_LIST	=	main.cpp\
 
