@@ -1,14 +1,15 @@
 
-NAME		=
+NAME		= usefulFixed
 
 SOURCES_LIST	=	main.cpp\
+					Fixed.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =	Fixed.hpp\
 HEADERS_DIR	=  .\
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

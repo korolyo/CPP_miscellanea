@@ -12,21 +12,11 @@ void	HumanA::setName(std::string name)
 
 std::string	HumanA::getName(void)
 {
-	return (this->_name);
+	return (_name);
 }
 
 void	HumanA::attack()
 {
 	std::cout << _name << " attacks with their ";
-	std::cout << this->_weapon.getType() << std::endl;
+	std::cout << *_weapon.getType() << std::endl;
 }
-
-//void	HumanA::setWeapon(Weapon weapon)
-//{
-//	this->weapon = weapon;
-//}
-//
-//Weapon	HumanA::getWeapon(void)
-//{
-//	return (weapon);
-//}

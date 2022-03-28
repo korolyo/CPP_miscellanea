@@ -8,7 +8,7 @@ private:
 
 public:
 	void		setType(std::string type);
-	std::string	getType(void);
+	std::string	*getType(void);
 	Weapon();
 	Weapon(std::string type);
 	~Weapon();

@@ -10,10 +10,7 @@ private:
 	Weapon		*_weapon;
 
 public:
-	void		setName(std::string name);
-	std::string	getName(void);
-	void		setWeapon(Weapon weapon);
-	Weapon		getWeapon(void);
+	void		setWeapon(Weapon &weapon);
 	void		attack();
 	HumanB(std::string name);
 	~HumanB();

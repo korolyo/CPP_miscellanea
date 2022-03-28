@@ -53,6 +53,7 @@ dkms.conf
 
 #MAIN
 *.o
+*.tmp
 .DS_Store
 *.d
 miniRT

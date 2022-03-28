@@ -3,6 +3,7 @@ NAME		= replace
 
 SOURCES_LIST	=	main.cpp\
 
+
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
