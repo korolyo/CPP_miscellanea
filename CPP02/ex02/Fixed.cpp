@@ -8,7 +8,7 @@ Fixed::Fixed() {
 Fixed::Fixed(Fixed const &fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	_fixedPoint = fixed.getRawBits();
+	_fixedPoint = fixed.toFloat();
 }
 
 Fixed::~Fixed() {
@@ -36,63 +36,133 @@ void Fixed::setRawBits(const int raw)
 	_fixedPoint = raw;
 }
 
-Fixed( const Fixed &fixed , const int fixedPoint ) {
+bool Fixed::operator>( Fixed const &f1 ) {
 
+	return (this->_fixedPoint > f1._fixedPoint);
 }
 
-bool Fixed::operator>( Fixed const &f1, Fixed const &f2 ) {
+bool Fixed::operator<( Fixed const &f1 )  {
 
-	return (f1._fixedPoint > f2._fixedPoint);
+	return (this->_fixedPoint < f1._fixedPoint);
 }
 
-bool Fixed::operator<( Fixed const &f1, Fixed const &f2 )  {
+bool Fixed::operator>=( Fixed const &f1 ) {
 
-	return (f1._fixedPoint < f2._fixedPoint);
+	return (this->_fixedPoint >= f1._fixedPoint);
 }
 
-bool Fixed::operator>=( Fixed const &f1, Fixed const &f2 ) {
+bool Fixed::operator<=( Fixed const &f1 ) {
 
-	return (f1._fixedPoint >= f2._fixedPoint);
+	return (this->_fixedPoint <= f1._fixedPoint);
 }
 
-bool Fixed::operator<=( Fixed const &f1, Fixed const &f2 ) {
+bool Fixed::operator==( Fixed const &f1 ) {
 
-	return (f1._fixedPoint <= f2._fixedPoint);
+	return (this->_fixedPoint == f1._fixedPoint);
 }
 
-bool Fixed::operator==( Fixed const &f1, Fixed const &f2 ) {
+bool Fixed::operator!=( Fixed const &f1 ) {
 
-	return (f1._fixedPoint == f2._fixedPoint);
+	return (this->_fixedPoint != f1._fixedPoint);
 }
 
-bool Fixed::operator!=( Fixed const &f1, Fixed const &f2 ) {
+Fixed Fixed::operator+( Fixed const &f1 )  {
 
-	return (f1._fixedPoint != f2._fixedPoint);
+	return Fixed( this->toFloat() + f1.toFloat() );
 }
 
-int Fixed::operator+( Fixed const &f1, Fixed const &f2 )  {
+Fixed Fixed::operator-( Fixed const &f1 )  {
 
-	return (f1._fixedPoint + f2._fixedPoint);
+	return Fixed( this->toFloat() - f1.toFloat() );
 }
 
-int Fixed::operator-( Fixed const &f1, Fixed const &f2 )  {
+Fixed Fixed::operator*( Fixed const &f1 )  {
 
-	return (f1._fixedPoint - f2._fixedPoint);
+	return Fixed( this->toFloat() * f1.toFloat() );
 }
 
-int Fixed::operator*( Fixed const &f1, Fixed const &f2 )  {
+Fixed Fixed::operator/( Fixed const &f1 )  {
 
-	return (f1._fixedPoint * f2._fixedPoint);
+	return Fixed( this->toFloat() + f1.toFloat() );
 }
 
-int Fixed::operator/( Fixed const &f1, Fixed const &f2 )  {
-
-	return (f1._fixedPoint / f2._fixedPoint);
+Fixed & Fixed::operator++() {
+	++_fixedPoint;
+	this->toFloat();
+	return (*this);
+}
+Fixed & Fixed::operator--() {
+	--_fixedPoint;
+	this->toFloat();
+	return (*this);
 }
 
-bool Fixed::operator++( Fixed const &fixed )
-bool Fixed::operator--( Fixed const &fixed )
-static int Fixed::min(int &fixedPoint1, int &fixedPoint2)
-static int Fixed::min(int const &fixedPoint1, int const &fixedPoint2)
-static int Fixed::max(int &fixedPoint1, int &fixedPoint2)
-static int Fixed::max(int const &fixedPoint1, int const &fixedPoint2)
+Fixed & Fixed::operator++( int ) {
+	_fixedPoint++;
+	this->toFloat();
+	return (*this);
+}
+
+Fixed & Fixed::operator--( int ) {
+	_fixedPoint--;
+	this->toFloat();
+	return (*this);
+}
+//Fixed & Fixed::operator++( Fixed const &f1 ) { }
+//Fixed & Fixed::operator--( Fixed const &f1 ) { }
+
+float Fixed::min( Fixed const &f1, Fixed const &f2 ) {
+
+	if (f1._fixedPoint > f2._fixedPoint)
+		return (f2.toFloat());
+	return f1.toFloat();
+}
+
+//float Fixed::min( Fixed const &f1, Fixed const &f2 ) const {
+//
+//	if (f1.toFloat() > f2.toFloat())
+//		return (f2.toFloat());
+//	return f1.toFloat();
+//}
+//
+//float Fixed::max( Fixed const &f1, Fixed const &f2 ) {
+//
+//	if (f1.toFloat() > f2.toFloat())
+//		return (f1.toFloat());
+//	return f2.toFloat();
+//}
+
+float Fixed::max( Fixed &f1, Fixed &f2 ) {
+	float i;
+
+	if (f1._fixedPoint > f2._fixedPoint)
+		i = f1.toFloat();
+	else
+		i = f2.toFloat();
+	return i;
+}
+
+std::ostream & operator<<( std::ostream & o, Fixed const &fixed) {
+	o << fixed.toFloat();
+	return o;
+}
+
+Fixed::Fixed( const int fixedPoint ) {
+	std::cout << "Int constructor called" << std::endl;
+	_fixedPoint = (fixedPoint * (1 << _bits));
+}
+
+Fixed::Fixed( const float floatPoint ) {
+	std::cout << "Float constructor called" << std::endl;
+	_fixedPoint = (int)(roundf(floatPoint * (1 << _bits)));
+}
+
+float	Fixed::toFloat( void ) const {
+
+	return (float)_fixedPoint / (float(1 << _bits));
+}
+
+int		Fixed::toInt( void ) const {
+
+	return (int)(roundf(_fixedPoint / (1 << _bits)));
+}
