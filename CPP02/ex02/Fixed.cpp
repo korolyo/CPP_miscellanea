@@ -97,16 +97,19 @@ Fixed & Fixed::operator--() {
 	return (*this);
 }
 
-Fixed & Fixed::operator++( int ) {
-	_fixedPoint++;
-	this->toFloat();
-	return (*this);
+Fixed Fixed::operator++( int ) {
+	Fixed tmp = *this;
+	this->_fixedPoint--;
+//	this->toFloat();
+	return (tmp);
 }
 
-Fixed & Fixed::operator--( int ) {
-	_fixedPoint--;
+Fixed Fixed::operator--( int ) {
+	Fixed tmp;
+	tmp = *this;
+	this->_fixedPoint--;
 	this->toFloat();
-	return (*this);
+	return (tmp);
 }
 //Fixed & Fixed::operator++( Fixed const &f1 ) { }
 //Fixed & Fixed::operator--( Fixed const &f1 ) { }
@@ -132,7 +135,7 @@ float Fixed::min( Fixed const &f1, Fixed const &f2 ) {
 //	return f2.toFloat();
 //}
 
-float Fixed::max( Fixed &f1, Fixed &f2 ) {
+float Fixed::max( Fixed const &f1, Fixed const &f2 ) {
 	float i;
 
 	if (f1._fixedPoint > f2._fixedPoint)
@@ -158,7 +161,7 @@ Fixed::Fixed( const float floatPoint ) {
 }
 
 float	Fixed::toFloat( void ) const {
-
+//	std::cout << "toFloat" << std::endl;
 	return (float)_fixedPoint / (float(1 << _bits));
 }
 

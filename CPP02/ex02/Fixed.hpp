@@ -30,8 +30,8 @@ public:
 
 	Fixed & operator++();
 	Fixed & operator--();
-	Fixed & operator++( int );
-	Fixed & operator--( int );
+	Fixed operator++( int );
+	Fixed operator--( int );
 
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
@@ -41,7 +41,7 @@ public:
 	static float min( Fixed const &f1, Fixed const &f2 );
 //	static float min( Fixed const &f1, Fixed const &f2 ) const;
 //	static float max( Fixed const &f1, Fixed const &f2 ) const;
-	static float max( Fixed &f1, Fixed &f2 );
+	static float max( Fixed const &f1, Fixed const &f2 );
 
 private:
 

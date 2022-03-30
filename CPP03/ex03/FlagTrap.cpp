@@ -1,36 +1,43 @@
-#include "ClapTrap.hpp"
+#include "includes/FlagTrap.hpp"
 
-ClapTrap::ClapTrap() {
-	std::cout << "Default constructor called" << std::endl;
-}
-ClapTrap::~ClapTrap() {
-	std::cout << "Default destructor called" << std::endl;
-}
-ClapTrap::ClapTrap( ClapTrap const &clap )
+FlagTrap::FlagTrap() : ClapTrap()
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Default Flag constructor called" << std::endl;
 }
 
-ClapTrap & ClapTrap::operator=( ClapTrap const &clap )
+FlagTrap::FlagTrap( std::string name ) : ClapTrap(name)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Flag name constructor called" << std::endl;
+	this->setName(name);
+	_hp = 100;
+	_energy = 100;
+	_damage = 30;
 }
 
-void	ClapTrap::attack( const std::string &target ) {
-
-	std::cout << "ClapTrap " << _name << " attacks " << target << " causing ";
-	std::cout << _damage << " hit points!" << std::endl;
+FlagTrap::~FlagTrap()
+{
+	std::cout << "Default Flag destructor called" << std::endl;
 }
 
-void	ClapTrap::takeDamage( unsigned int amount ) {
-
-	std::cout << "ClapTrap " << _name << " gets damage: ";
-	std::cout << amount << " hit points!" << std::endl;
+FlagTrap::FlagTrap( FlagTrap const &flagTrap ) : ClapTrap()
+{
+	std::cout << "Copy Flag constructor called" << std::endl;
 }
 
-void	ClapTrap::beRepaired( unsigned int amount ) {
+FlagTrap & FlagTrap::operator=( FlagTrap const &flagTrap )
+{
+	std::cout << "Scav copy assignment operator called" << std::endl;
+	if (this != &flagTrap) {
+		_name = flagTrap.getName();
+	}
+	return (*this);
+}
 
-	std::cout << "ClapTrap " << _name << " repaired: +";
-	std::cout << amount << " hp!" << std::endl;
-	std::cout << "Now he has " << _hp << " hp!" << std::endl;
+void	FlagTrap::highFivesGuys( void ) {
+	std::cout << "High five, Visitor!" << std::cout << std::endl;
+}
+
+std::ostream & operator<<( std::ostream & o, FlagTrap const &flagTrap ) {
+	o << flagTrap.getName();
+	return o;
 }

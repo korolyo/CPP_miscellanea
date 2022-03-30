@@ -1,8 +1,11 @@
-#include "ClapTrap.hpp"
+#include "includes/ClapTrap.hpp"
 
-int main()
+int main( void )
 {
-	ClapTrap	clap1;
-	ClapTrap	clap2;
+	ClapTrap	clap1 = ClapTrap("Tinkot");
+	ClapTrap	clap2 = ClapTrap("Rust");
+
+	clap1.attack("Rust");
+	clap2.takeDamage(clap1.getDamage());
 	return 0;
 }

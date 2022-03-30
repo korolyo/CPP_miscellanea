@@ -1,36 +1,45 @@
-#include "ScavTrap.hpp"
+#include "includes/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
-	std::cout << "Default constructor called" << std::endl;
-}
-ScavTrap::~ScavTrap() {
-	std::cout << "Default destructor called" << std::endl;
-}
-ScavTrap::ScavTrap( ScavTrap const &clap )
+ScavTrap::ScavTrap() : ClapTrap()
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Default Scav constructor called" << std::endl;
 }
 
-ScavTrap & ScavTrap::operator=( ScavTrap const &clap )
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Scav name constructor called" << std::endl;
+	this->setName(name);
+	_damage = 20;
+	_hp = 100;
+	_energy = 50;
 }
 
-void	ScavTrap::attack( const std::string &target ) {
-
-	std::cout << "ScavTrap " << _name << " attacks " << target << " causing ";
-	std::cout << _damage << " hit points!" << std::endl;
+ScavTrap::~ScavTrap()
+{
+	std::cout << "Default Scav destructor called" << std::endl;
 }
 
-void	ScavTrap::takeDamage( unsigned int amount ) {
-
-	std::cout << "ScavTrap " << _name << " gets damage: ";
-	std::cout << amount << " hit points!" << std::endl;
+ScavTrap::ScavTrap( ScavTrap const &scavTrap ) : ClapTrap()
+{
+	std::cout << "Copy Scav constructor called" << std::endl;
+	_name = scavTrap.getName();
 }
 
-void	ScavTrap::beRepaired( unsigned int amount ) {
+ScavTrap & ScavTrap::operator=( ScavTrap const &scavTrap )
+{
+	std::cout << "Scav copy assignment operator called" << std::endl;
+	if (this != &scavTrap) {
+		_name = scavTrap.getName();
+	}
+	return (*this);
+}
 
-	std::cout << "ScavTrap " << _name << " repaired: +";
-	std::cout << amount << " hp!" << std::endl;
-	std::cout << "Now he has " << _hp << " hp!" << std::endl;
+void	ScavTrap::guardGate( void ) {
+	std::cout << "ScavTrap " << _name << " is now in a Gate keeper mode!";
+	std::cout << std::endl;
+}
+
+std::ostream & operator<<( std::ostream & o, ScavTrap const &scavTrap ) {
+	o << scavTrap.getName();
+	return o;
 }
