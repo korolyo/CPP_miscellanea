@@ -1,7 +1,9 @@
-#include <iostream>
+#include "Bureaucrat.hpp"
 
-int main()
-{
-	std::cout << "Hello, World!" << std::endl;
+int main( void ) {
+
+	Bureaucrat jorgen;
+
+
 	return 0;
 }

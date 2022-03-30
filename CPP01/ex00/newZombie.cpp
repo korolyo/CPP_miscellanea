@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Zombie.hpp"
+#include "includes/Zombie.hpp"
 
 Zombie	*newZombie(std::string name) {
 	Zombie *zombie = new Zombie();

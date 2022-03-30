@@ -22,6 +22,7 @@ FlagTrap::~FlagTrap()
 FlagTrap::FlagTrap( FlagTrap const &flagTrap ) : ClapTrap()
 {
 	std::cout << "Copy Flag constructor called" << std::endl;
+	_name = flagTrap.getName();
 }
 
 FlagTrap & FlagTrap::operator=( FlagTrap const &flagTrap )

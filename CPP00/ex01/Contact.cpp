@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Contact.hpp"
+#include "includes/Contact.hpp"
 
 Contact::Contact() { }
 Contact::~Contact() {

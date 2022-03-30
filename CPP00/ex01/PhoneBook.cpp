@@ -1,6 +1,6 @@
 #include <iostream>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "includes/PhoneBook.hpp"
+#include "includes/Contact.hpp"
 
 PhoneBook::PhoneBook() {
 	int i = -1;

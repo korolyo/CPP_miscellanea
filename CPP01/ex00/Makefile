@@ -12,7 +12,7 @@ CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 INCLUDES = -I$(HEADERS_DIR)
 
 HEADERS_LIST =	Zombie.hpp\
-HEADERS_DIR	=  .\
+HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))
@@ -22,9 +22,9 @@ OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))
 all	: 	$(NAME)
 
 $(NAME): $(OBJECTS)
-		$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+		$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) -o $(NAME)
 
-%.o : %.c
+%.o : %.cpp $(HEADERS) Makefile
 	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 
 

@@ -18,6 +18,7 @@ ClapTrap::~ClapTrap() {
 
 ClapTrap::ClapTrap( ClapTrap const &clapTrap ) {
 	std::cout << "Copy constructor called" << std::endl;
+	_name = clapTrap.getName();
 }
 
 ClapTrap & ClapTrap::operator=( ClapTrap const &clapTrap ) {

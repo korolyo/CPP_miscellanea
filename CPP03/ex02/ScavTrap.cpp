@@ -22,6 +22,7 @@ ScavTrap::~ScavTrap()
 ScavTrap::ScavTrap( ScavTrap const &scavTrap ) : ClapTrap()
 {
 	std::cout << "Copy Scav constructor called" << std::endl;
+	_name = scavTrap.getName();
 }
 
 ScavTrap & ScavTrap::operator=( ScavTrap const &scavTrap )
