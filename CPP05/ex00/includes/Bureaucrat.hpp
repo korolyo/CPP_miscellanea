@@ -2,6 +2,19 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <exception>
+
+class GradeTooHighException : public std::exception {
+	virtual std::string *what() const {
+		return "Grade is in it's maximum";
+	}
+};
+
+class GradeTooLowException : public std::exception {
+	virtual std::string *what() const {
+		return "Grade is in it's maximum";
+	}
+};
 
 class Bureaucrat
 {

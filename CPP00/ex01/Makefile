@@ -12,6 +12,7 @@ INCLUDES = -I$(HEADERS_DIR)
 
 HEADERS_LIST =	Contact.hpp\
 				PhoneBook.hpp\
+
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

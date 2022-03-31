@@ -14,6 +14,7 @@ INCLUDES = -I$(HEADERS_DIR)
 HEADERS_LIST = 					Weapon.hpp\
                					HumanA.hpp\
                					HumanB.hpp\
+
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

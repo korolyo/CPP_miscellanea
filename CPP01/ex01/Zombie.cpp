@@ -1,5 +1,4 @@
-#include <iostream>
-#include "includes/Zombie.hpp"
+#include "Zombie.hpp"
 
 void	Zombie::setName(std::string name)
 {

@@ -1,7 +1,4 @@
-#include <iostream>
-#include "includes/HumanB.hpp"
-
-#include "includes/Weapon.hpp"
+#include "HumanB.hpp"
 
 HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) { }
 HumanB::~HumanB() { }

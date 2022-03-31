@@ -1,4 +1,4 @@
-#include "includes/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() { }
 
@@ -29,10 +29,26 @@ void		Bureaucrat::setGrade( int grade ) {
 }
 
 void	Bureaucrat::incrementGrade( void ) {
+	try {
+		if (this->_grade <= 0)
+			throw "Grade is in it's maximum";
+	}
+	catch (char const* exception) {
+		std::cerr << exception << std::endl;
+		exit(1);
+	}
 	this->_grade = getGrade() - 1;
 }
 
 void	Bureaucrat::decrementGrade( void ) {
+	try {
+		if (this->_grade > 150)
+			throw "Grade is in it's minimum";
+	}
+	catch (char const* exception) {
+		std::cerr << exception << std::endl;
+		exit(1);
+	}
 	this->_grade = getGrade() + 1;
 }
 

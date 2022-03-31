@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	std::string	line;
 	std::string	s1 = argv[2];
 	std::string	s2 = argv[3];
-	int			pos;
+	size_t		pos;
 
 	if (argc != 4)
 	{

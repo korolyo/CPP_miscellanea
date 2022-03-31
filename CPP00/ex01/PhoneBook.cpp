@@ -1,6 +1,5 @@
-#include <iostream>
-#include "includes/PhoneBook.hpp"
-#include "includes/Contact.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 PhoneBook::PhoneBook() {
 	int i = -1;
@@ -21,7 +20,6 @@ void PhoneBook::add(void)
 	std::string	nickname;
 	std::string	phoneNumber;
 	std::string	darkestSecret;
-	int			i = -1;
 
 	if (_counter == 8)
 	{
@@ -60,7 +58,7 @@ void	PhoneBook::printInfo()
 
 	while (i < getNumOfContacts())
 	{
-		int j = 10;
+		unsigned long j = 10;
 		std::cout << "|          " << _contacts[i].getIndex() << " |   ";
 		while (--j > _contacts[i].getFirstName().length())
 			std::cout << " ";
@@ -91,7 +89,6 @@ void PhoneBook::search(void)
 {
 	std::string	num;
 	int 		i = 0;
-	int			j = -1;
 
 	if (getNumOfContacts() == 0)
 	{
@@ -148,7 +145,8 @@ int		PhoneBook::getCounter(void)
 
 void	PhoneBook::setContacts(Contact contact, int index)
 {
-	_contacts[index] = Contact();
+	contact = Contact();
+	_contacts[index] = contact;
 }
 
 Contact	*PhoneBook::getContacts()

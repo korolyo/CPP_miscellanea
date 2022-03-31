@@ -3,15 +3,8 @@ NAME		= replace
 
 SOURCES_LIST	=	main.cpp\
 
-
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
-
-INCLUDES = -I$(HEADERS_DIR)
-
-HEADERS_LIST =
-HEADERS_DIR	=  .\
-HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))
 
@@ -22,8 +15,8 @@ all	: 	$(NAME)
 $(NAME): $(OBJECTS)
 		$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
 
-%.o : %.c
-	@$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
+%.o : %.cpp
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		@rm -f $(OBJECTS)
