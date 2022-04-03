@@ -1,8 +1,7 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#include "PresidentialPardonForm.hpp"
 
-class RobotomyRequestForm {
+PresidentialPardonForm::PresidentialPardonForm() { }
 
-};
+PresidentialPardonForm::~PresidentialPardonForm() { }
 
-#endif
+

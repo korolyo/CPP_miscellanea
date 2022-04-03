@@ -1,7 +1,14 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
-class RobotomyRequestForm {
+class PresidentialPardonForm {
+
+public:
+
+	PresidentialPardonForm();
+	~PresidentialPardonForm();
+
+private:
 
 };
 

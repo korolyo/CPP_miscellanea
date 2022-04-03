@@ -1,8 +1,7 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#include "ShrubberyCreationForm.hpp"
 
-class RobotomyRequestForm {
+ShrubberyCreationForm::ShrubberyCreationForm() { }
 
-};
+ShrubberyCreationForm::~ShrubberyCreationForm() { }
 
-#endif
+

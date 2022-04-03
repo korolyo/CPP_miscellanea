@@ -1,7 +1,14 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
-class RobotomyRequestForm {
+class ShrubberyCreationForm {
+
+public:
+
+	ShrubberyCreationForm();
+	~ShrubberyCreationForm();
+
+private:
 
 };
 

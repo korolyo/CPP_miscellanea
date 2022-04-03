@@ -9,7 +9,7 @@ int main()
 	heapName = "PhpLover";
 	heapZombie = newZombie(heapName);
 	heapZombie->announce();
-	heapZombie->~Zombie();
+	delete heapZombie;
 	stackName = "KobolLover";
 	randomChump(stackName);
 	return (0);

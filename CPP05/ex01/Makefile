@@ -12,6 +12,7 @@ INCLUDES = -I$(HEADERS_DIR)
 
 HEADERS_LIST =	Bureaucrat.hpp\
 				Form.hpp\
+
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

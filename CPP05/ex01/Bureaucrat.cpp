@@ -1,4 +1,5 @@
-#include "includes/Bureaucrat.hpp"
+#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() { }
 
@@ -29,11 +30,41 @@ void		Bureaucrat::setGrade( int grade ) {
 }
 
 void	Bureaucrat::incrementGrade( void ) {
+	try {
+		if (this->_grade <= 0)
+			throw Bureaucrat::GradeTooLowException();
+	}
+	catch (GradeTooHighException &ex1) {
+		std::cerr << ex1.what() << std::endl;
+	}
 	this->_grade = getGrade() - 1;
 }
 
 void	Bureaucrat::decrementGrade( void ) {
+	try {
+		if (this->_grade > 150)
+			throw Bureaucrat::GradeTooLowException();
+	}
+	catch (GradeTooLowException &ex2) {
+		std::cerr << ex2.what() << std::endl;
+	}
 	this->_grade = getGrade() + 1;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is in it's maximum";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is in it's minimum";
+}
+
+void	Bureaucrat::signForm( Form &form ) {
+	if (form.getSigned())
+		std::cout << this->getName() << " signed " << form.getName() <<
+		std::endl;
+	std::cout << this->getName() << " counld't sign " << form.getName();
+	std::cout << " because " << "<reason>" << std::endl;
 }
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {

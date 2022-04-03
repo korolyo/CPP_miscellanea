@@ -7,9 +7,6 @@ PhoneBook::PhoneBook() {
 		_contacts[i] = Contact();
 }
 PhoneBook::~PhoneBook() {
-	int i = -1;
-	while (++i < 8)
-		_contacts[i].~Contact();
 	std::cout << "Destructor phonebook\n";
 }
 

@@ -4,18 +4,6 @@
 #include <iostream>
 #include <exception>
 
-class GradeTooHighException : public std::exception {
-	virtual std::string *what() const {
-		return "Grade is in it's maximum";
-	}
-};
-
-class GradeTooLowException : public std::exception {
-	virtual std::string *what() const {
-		return "Grade is in it's maximum";
-	}
-};
-
 class Bureaucrat
 {
 public:
@@ -32,9 +20,25 @@ public:
 	void	incrementGrade( void );
 	void	decrementGrade( void );
 
+	class GradeTooHighException;
+
+	class GradeTooLowException;
+
 private:
 	std::string const	_name;
 	int					_grade;
+};
+
+class Bureaucrat::GradeTooHighException : public std::exception {
+public:
+
+	virtual const char* what() const throw ();
+};
+
+class Bureaucrat::GradeTooLowException : public std::exception {
+public:
+
+	virtual const char *what() const throw ();
 };
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat);
