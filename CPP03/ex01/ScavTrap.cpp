@@ -1,11 +1,14 @@
-#include "includes/ScavTrap.hpp"
+#include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "Default Scav constructor called" << std::endl;
+	_damage = 20;
+	_hp = 100;
+	_energy = 50;
 }
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
+ScavTrap::ScavTrap( const std::string& name ) : ClapTrap(name)
 {
 	std::cout << "Scav name constructor called" << std::endl;
 	this->setName(name);

@@ -1,4 +1,4 @@
-#include "includes/FlagTrap.hpp"
+#include "FlagTrap.hpp"
 
 int main( void )
 {

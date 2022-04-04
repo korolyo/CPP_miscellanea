@@ -1,24 +1,19 @@
 
 #include "Harl.hpp"
 
-int main(int argc, char **argv)
+int main( void )
 {
 	Harl harl = Harl();
 	std::string info;
 	std::string	level;
 
-	if (argc < 2)
-		level = "ERROR";
-	if (argc > 1)
-	{
-		info = argv[1];
-		if (info == "Hello")
-			level = "INFO";
-		else if (info == "1")
-			level = "DEBUG";
-		else
-			level = "WARNING";
-	}
+	level = "WARNING";
+	harl.complain(level);
+	level = "INFO";
+	harl.complain(level);
+	level = "DEBUG";
+	harl.complain(level);
+	level = "ERROR";
 	harl.complain(level);
 	return (0);
 }

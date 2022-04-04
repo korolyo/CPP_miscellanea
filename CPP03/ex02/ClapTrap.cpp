@@ -1,4 +1,4 @@
-#include "includes/ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() {
 	std::cout << "Default constructor called" << std::endl;

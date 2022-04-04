@@ -9,6 +9,7 @@ class	Cat : public Animal {
 public:
 
 	Cat();
+	Cat( std::string& type );
 	~Cat();
 	Cat( Cat const &cat );
 

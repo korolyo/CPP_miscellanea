@@ -8,6 +8,12 @@ Cat::Cat() : Animal()
 	this->setType("Cat");
 }
 
+Cat::Cat(std::string& type) : Animal()
+{
+	std::cout << "Cat default constructor" << std::endl;
+	this->setType(type);
+}
+
 Cat::~Cat()
 {
 	std::cout << "Cat default destructor" << std::endl;

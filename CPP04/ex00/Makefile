@@ -5,6 +5,8 @@ SOURCES_LIST	=	main.cpp\
 					Animal.cpp\
 					Cat.cpp\
 					Dog.cpp\
+               		WrongAnimal.cpp\
+                	WrongCat.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
@@ -14,6 +16,8 @@ INCLUDES = -I$(HEADERS_DIR)
 HEADERS_LIST =	Animal.hpp\
                 Cat.hpp\
                 Dog.hpp\
+                WrongAnimal.hpp\
+                WrongCat.hpp\
 
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))

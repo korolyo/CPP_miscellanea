@@ -3,6 +3,7 @@
 
 Animal::Animal() {
 	std::cout << "Animal default constructor" << std::endl;
+	this->setType("Animal");
 }
 
 Animal::~Animal() {

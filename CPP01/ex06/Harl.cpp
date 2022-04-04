@@ -1,3 +1,4 @@
+
 #include "Harl.hpp"
 
 Harl::Harl() { }
@@ -8,9 +9,9 @@ void	Harl::complain( std::string	level )
 	typedef void (Harl::*HarlFunc)(void);
 	std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	HarlFunc funcs[4] = { &Harl::_debug,
-					  &Harl::_info,
-					  &Harl::_warning,
-					  &Harl::_error };
+						  &Harl::_info,
+						  &Harl::_warning,
+						  &Harl::_error };
 	for (int i = 0; i < 4; i++) {
 		if (level == levels[i])
 		{
