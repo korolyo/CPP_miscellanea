@@ -1,7 +1,7 @@
-#include <iostream>
+#include "Serialization.hpp"
 
-int main()
+int main( void )
 {
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
+    yo;
+    return 0;
 }
