@@ -1,5 +1,5 @@
 
-NAME		= Abstract
+NAME		= brain
 
 SOURCES_LIST	=	main.cpp\
 					Animal.cpp\

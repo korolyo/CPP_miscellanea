@@ -31,4 +31,3 @@ std::ostream & operator<<( std::ostream & o, Cat const &cat) {
 	o << cat.getType();
 	return o;
 }
-

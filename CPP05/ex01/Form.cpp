@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+//Constructors:
+
 Form::Form( std::string name, const int gradeSign, const int gradeExec ) :
 		_name(name),
 		_gradeSign(gradeSign),
@@ -19,6 +21,7 @@ Form::Form( Form const &form ) :
 	checkExecGrade();
 }
 
+//Desstructors:
 Form::~Form() { }
 
 std::string Form::getName( void ) const {

@@ -1,9 +1,9 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
-# include "Brain.hpp"
+# include <iostream>
 
-class	Brain : public Animal {
+class	Brain {
 
 public:
 
@@ -13,7 +13,10 @@ public:
 
 	Brain & operator=( Brain const &brain );
 
-	std::string ideas[100];
+	const std::string& getIdea( int index ) const;
+private:
+
+	std::string _ideas[100];
 };
 
 std::ostream & operator<<( std::ostream & o, Brain const &brain);

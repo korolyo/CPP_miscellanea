@@ -10,7 +10,7 @@ class	Form
 public:
 	Form( std::string name, const int gradeSign, const int gradeExec );
 	Form( Form const &form );
-	~Form();
+	virtual ~Form();
 
 	Form & operator=( Form const &form );
 

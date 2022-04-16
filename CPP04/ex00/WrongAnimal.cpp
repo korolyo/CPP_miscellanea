@@ -1,5 +1,4 @@
-#include "includes/WrongAnimal.hpp"
-
+#include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal() {
 	std::cout << "WrongAnimal default constructor" << std::endl;

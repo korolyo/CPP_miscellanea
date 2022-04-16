@@ -3,7 +3,7 @@
 
 # include <iostream>
 
-class	AAnimal {
+class	Animal {
 
 public:
 
@@ -13,9 +13,10 @@ public:
 
 	Animal & operator=( Animal const &animal );
 
-	virtual void makeSound() const = 0;
-	void		setType( std::string type ) = 0;
-	std::string	getType( void ) const = 0;
+	virtual void	makeSound() const = 0;
+	
+	void				setType( std::string type );
+	std::string			getType( void ) const;
 
 protected:
 	std::string type;

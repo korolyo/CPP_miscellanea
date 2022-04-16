@@ -7,8 +7,12 @@ public:
 
 	ShrubberyCreationForm();
 	~ShrubberyCreationForm();
+	ShrubberyCreationForm( ShrubberyCreationForm const & shrub );
+
+	ShrubberyCreationForm & operator=( ShrubberyCreationForm const & shrub );
 
 private:
+
 
 };
 

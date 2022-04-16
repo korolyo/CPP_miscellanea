@@ -30,15 +30,6 @@ int main()
 			dogCopy.makeSound();
 			std::cout << "dogCopy's brain copied from dogAnimal=>\n" << dogCopy.getBrain() << "\n";
 		}
-		std::cout << "";
-		{
-			Animal* catAnimal = new Cat("CatAnimal");
-			Cat catCopy("BeforeCopyCat");
-			catCopy = (*(Cat*)catAnimal);
-			delete catAnimal;
-			catCopy.makeSound();
-			std::cout << "catCopy's brain copied from catAnimal=>\n" << catCopy.getBrain() << "\n";
-		}
 	}
 	return 0;
 }

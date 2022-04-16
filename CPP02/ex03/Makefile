@@ -1,14 +1,18 @@
 
-NAME		=
+NAME		= BSP
 
 SOURCES_LIST	=	main.cpp\
+					Fixed.cpp\
+					Point.cpp\
+					bsp.cpp
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =	Fixed.hpp\
+				Point.hpp\
 
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))

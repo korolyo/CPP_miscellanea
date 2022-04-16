@@ -25,7 +25,8 @@ public:
 
 	void	checkSignedGrade( void );
 	void	checkExecGrade( void );
-	void	beSigned( Bureaucrat &tom );
+
+	void	beSigned( Bureaucrat const &tom );
 
 private:
 	std::string const	_name;

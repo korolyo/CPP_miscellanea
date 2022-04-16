@@ -1,7 +1,7 @@
-#include <iostream>
-
-int main()
-{
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
-}
+//#include "Point.hpp"
+//
+//int main( void ) {
+//
+//
+//	return 0;
+//}
