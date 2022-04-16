@@ -70,12 +70,12 @@ void	Bureaucrat::decrementGrade( void ) {
 
 void Bureaucrat::signForm( Form const & form ) {
 	try {
-		if (form.isSigned() == true)
-			std::cout << this->getName << " signed " << form.getName() << std::endl;
+		if (form.isSigned())
+			std::cout << this->getName() << " signed " << form.getName() << std::endl;
 		else
-			throw B
+			throw B;
 	}
-	std::cout << this->getName << " signed " << form.getName() << std::endl;
+	std::cout << this->getName() << " signed " << form.getName() << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
