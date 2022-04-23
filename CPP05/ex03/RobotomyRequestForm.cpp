@@ -1,44 +1,32 @@
-#include "includes/Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
-Bureaucrat::Bureaucrat() { }
+RobotomyRequestForm::RobotomyRequestForm( std::string const &target ) : Form("robotomy request", 72, 45, target) { }
 
-Bureaucrat::~Bureaucrat() { }
-
-Bureaucrat::Bureaucrat( Bureaucrat const &bureaucrat ) {
-	std::cout << "Bureaucrat copy constructor" << std::endl;
-	this->_grade = bureaucrat.getGrade();
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &copy) {
+	*this = copy;
 }
 
-Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
-	if (this != &bur)
-		_grade = bur.getGrade();
+RobotomyRequestForm::~RobotomyRequestForm() { }
+
+RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &robot ) {
+	std::string something = robot.getName();
 	return *this;
 }
 
-std::string Bureaucrat::getName( void ) const {
-	return this->_name;
+void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const {
+	if (!this->isSigned())
+		throw Form::FormNotSignedException();
+	if (executor.getGrade() > this->getGradeExec() )
+		throw Form::GradeTooLowException();
+
+	std::cout << "BZZZZZZZ.... (Drilling noises) ";
+	if (rand() % 2)
+		std::cout << this->getTarget() << " has been lobotomized successfully" << std::endl;
+	else
+		std::cout << this->getTarget() << " hasn't been lobotomized yet... " << std::endl;
 }
 
-int			Bureaucrat::getGrade( void ) const {
-	return _grade;
-}
-
-void		Bureaucrat::setGrade( int grade ) {
-	_grade = grade;
-}
-
-void	Bureaucrat::incrementGrade( void ) {
-	this->_grade = getGrade() - 1;
-}
-
-void	Bureaucrat::decrementGrade( void ) {
-	this->_grade = getGrade() + 1;
-}
-
-std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-	std::cout << bureaucrat.getName() << ", bureaucrat grade ";
-	std::cout << bureaucrat.getGrade() << std::endl;
-	o << bureaucrat.getName();
-	return o;
+Form					*RobotomyRequestForm::clone() const {
+	return (new RobotomyRequestForm(this->getTarget()));
 }

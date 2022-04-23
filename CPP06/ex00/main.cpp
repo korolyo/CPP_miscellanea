@@ -1,27 +1,44 @@
-#include "includes/Convert.hpp"
+#include "Convert.hpp"
 
-int main( int argc, char **argv ) {
+int main( int argc, char **av ) {
 
-std::string const   input(argv[1]);
-int                 i;
-char                c;
-float               f;
-double              d;
+	int                 i;
+	char                c;
+	float               f;
+	double              d;
 
-if (argc != 2) {
-    std::cout << "Error: wrong number of args" << std::endl;
-    exit(1);
-    }
-else {
-    i = std::stoi(input);
-    c = (char)std::stoi(input);
-    f = (float)stof(input);
-    d = (double)stod(input);
-    std::cout << "int: " << i << std::endl;
-    std::cout << "char: " << c << std::endl;
-    std::cout << "float: " << f << "f" << std::endl;
-    std::cout << "double: " << d << std::endl;
-    }
-return 0;
+	if (argc != 2) {
+	    std::cout << "Error: wrong number of args" << std::endl;
+	    exit(1);
+	    }
+	if (av[1][0] == '\0')
+	{
+		std::cout << "Error: invalid argument." << std::endl;
+		return 2;
+	}
+
+	Convert converter;
+	std::string input = static_cast<std::string>(av[1]);
+	std::string type = converter.checkType(input);
+
+	if (type == "int") {
+		i = std::atoi(input.c_str());
+		converter.conv(i);
+	}
+	else if (type == "float") {
+		f = std::atof(input.c_str());
+		converter.conv(f);
+	}
+	else if (type == "double") {
+		d = static_cast<double>(std::atof(input.c_str()));
+		converter.conv(d);
+	}
+	else if (type == "char") {
+		c = input.at(0);
+		converter.conv(c);
+	}
+	else if (type == "invalid") {
+		std::cout << "Invalid character input" << std::endl;
+	}
+	return 0;
 }
-

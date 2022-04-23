@@ -1,44 +1,73 @@
-#include "includes/Bureaucrat.hpp"
+#include "Form.hpp"
 
-Bureaucrat::Bureaucrat() { }
+//Constructors:
 
-Bureaucrat::~Bureaucrat() { }
+Form::Form() : _name("NewForm"), _gradeSign(150), _gradeExec(150), _signed(false) { }
 
-Bureaucrat::Bureaucrat( Bureaucrat const &bureaucrat ) {
-	std::cout << "Bureaucrat copy constructor" << std::endl;
-	this->_grade = bureaucrat.getGrade();
+Form::Form( std::string const &name, const int gradeSign, const int gradeExec, std::string const &target ) :
+		_name(name),
+		_gradeSign(gradeSign),
+		_gradeExec(gradeExec),
+		_signed(false),
+		_target(target)
+{
+	if (gradeExec > 150 || gradeSign > 150)
+		throw Form::GradeTooLowException();
+	if (gradeExec < 1 || gradeSign < 1)
+		throw Form::GradeTooHighException();
 }
 
-Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
-	if (this != &bur)
-		_grade = bur.getGrade();
-	return *this;
+Form::Form( Form const &copy ) :
+		_name(copy._name),
+		_gradeSign(copy._gradeSign),
+		_gradeExec(copy._gradeExec),
+		_signed(copy._signed) { }
+
+//Destructors:
+Form::~Form() { }
+
+std::string Form::getName( void ) const {
+	return _name;
 }
 
-std::string Bureaucrat::getName( void ) const {
-	return this->_name;
+std::string Form::getTarget( void ) const {
+	return _target;
 }
 
-int			Bureaucrat::getGrade( void ) const {
-	return _grade;
+int			Form::getGradeSign( void ) const {
+	return _gradeSign;
 }
 
-void		Bureaucrat::setGrade( int grade ) {
-	_grade = grade;
+int		Form::getGradeExec( void ) const {
+	return _gradeExec;
 }
 
-void	Bureaucrat::incrementGrade( void ) {
-	this->_grade = getGrade() - 1;
+bool		Form::isSigned( void ) const {
+	return _signed;
 }
 
-void	Bureaucrat::decrementGrade( void ) {
-	this->_grade = getGrade() + 1;
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade is in it's maximum";
 }
 
-std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-	std::cout << bureaucrat.getName() << ", bureaucrat grade ";
-	std::cout << bureaucrat.getGrade() << std::endl;
-	o << bureaucrat.getName();
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade is in it's minimum";
+}
+
+const char* Form::FormNotSignedException::what() const throw() {
+	return "Form is not signed";
+}
+
+void	Form::beSigned( Bureaucrat tom ) {
+	if (tom.getGrade() > _gradeSign)
+		throw Form::GradeTooLowException();
+	else
+		_signed = true;
+}
+
+std::ostream &operator<<( std::ostream &o, Form const &form) {
+	o << form.getName() << " is " << (form.isSigned() ? "signed" : "unsigned");
+	o << ", Form sign grade " << form.getGradeSign();
+	o << ", Form exec grade " << form.getGradeExec() << std::endl;
 	return o;
 }

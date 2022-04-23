@@ -1,44 +1,28 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm() { }
+RobotomyRequestForm::RobotomyRequestForm( std::string const &target ) : Form("Robotomy request", 72, 45, target) { }
+
+RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &copy) {
+	*this = copy;
+}
 
 RobotomyRequestForm::~RobotomyRequestForm() { }
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const &robot ) {
-	std::cout << "RobotomyRequestForm copy constructor" << std::endl;
-//	this->_grade = robot.getGrade();
+RobotomyRequestForm	&RobotomyRequestForm::operator=( RobotomyRequestForm const &robot ) {
+	std::string something = robot.getName();
+	return *this;
 }
-//
-//Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-//	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
-//	if (this != &bur)
-//		_grade = bur.getGrade();
-//	return *this;
-//}
-//
-//std::string Bureaucrat::getName( void ) const {
-//	return this->_name;
-//}
-//
-//int			Bureaucrat::getGrade( void ) const {
-//	return _grade;
-//}
-//
-//void		Bureaucrat::setGrade( int grade ) {
-//	_grade = grade;
-//}
-//
-//void	Bureaucrat::incrementGrade( void ) {
-//	this->_grade = getGrade() - 1;
-//}
-//
-//void	Bureaucrat::decrementGrade( void ) {
-//	this->_grade = getGrade() + 1;
-//}
-//
-//std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-//	std::cout << bureaucrat.getName() << ", bureaucrat grade ";
-//	std::cout << bureaucrat.getGrade() << std::endl;
-//	o << bureaucrat.getName();
-//	return o;
-//}
+
+void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const {
+	if (!this->isSigned())
+		throw Form::FormNotSignedException();
+	if (executor.getGrade() > this->getGradeExec() )
+		throw Form::GradeTooLowException();
+
+	std::cout << "BZZZZZZZ.... (Drilling noises) ";
+	if (rand() % 2)
+		std::cout << this->getTarget() << " has been lobotomized successfully" << std::endl;
+	else
+		std::cout << this->getTarget() << " hasn't been lobotomized yet... " << std::endl;
+}

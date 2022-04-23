@@ -1,34 +1,24 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade
-(grade) {
-	try {
-		if (this->_grade > 150)
-			throw GradeTooHighException();
-		if (this->_grade < 1)
-			throw GradeTooLowException();
-	}
-	catch (GradeTooHighException &ex1) {
-		std::cerr << ex1.what() << std::endl;
-	}
-	catch (GradeTooLowException &ex2) {
-		std::cerr << ex2.what() << std::endl;
-	}
-}
+Bureaucrat::Bureaucrat() : _name("New"), _grade(150) { }
 
-Bureaucrat::Bureaucrat() {
-	_grade = 150;
+Bureaucrat::Bureaucrat( std::string const &name, int grade ) : _name(name) {
+	if (grade > 150)
+		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
+	else
+		_grade = grade;
+	return;
 }
 
 Bureaucrat::~Bureaucrat() { }
 
 Bureaucrat::Bureaucrat( Bureaucrat const &bureaucrat ) {
-	std::cout << "Bureaucrat copy constructor" << std::endl;
 	this->_grade = bureaucrat.getGrade();
 }
 
 Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
 	if (this != &bur)
 		_grade = bur.getGrade();
 	return *this;
@@ -47,25 +37,17 @@ void		Bureaucrat::setGrade( int grade ) {
 }
 
 void	Bureaucrat::incrementGrade( void ) {
-	try {
-		if (this->_grade <= 0)
-			throw Bureaucrat::GradeTooLowException();
-	}
-	catch (GradeTooHighException &ex1) {
-		std::cerr << ex1.what() << std::endl;
-	}
-	this->_grade = getGrade() - 1;
+	if (this->_grade - 1 < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		--_grade;
 }
 
 void	Bureaucrat::decrementGrade( void ) {
-	try {
-		if (this->_grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-	}
-	catch (GradeTooLowException &ex2) {
-		std::cerr << ex2.what() << std::endl;
-	}
-	this->_grade = getGrade() + 1;
+	if (this->_grade + 1 > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		++_grade;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
@@ -76,7 +58,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade is in it's minimum";
 }
 
-std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-	o << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+std::ostream & operator<<( std::ostream &o, Bureaucrat const &bureaucrat) {
+	o << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
 	return o;
 }

@@ -20,6 +20,7 @@ HEADERS_LIST =	Bureaucrat.hpp\
                 RobotomyRequestForm.hpp\
                 ShrubberyCreationForm.hpp\
                 Intern.hpp\
+
 HEADERS_DIR	=  ./includes/
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 

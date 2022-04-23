@@ -1,55 +1,95 @@
-#include <stream>
+#include "Convert.hpp"
+#include <string>
+#include <limits.h>
+#include <iomanip>
 
-int isInt(std::string input)
-{
-    if (every char is num or -)
-        return 1;
-    return 0;
+Convert::Convert() { }
+
+Convert::Convert( Convert const &copy ) {
+	*this = copy ;
 }
 
-int isFloat(std::string input) {
-    if (everychar is num + dot +  char "f" at the end)
-        return 1;
-    return 0;
+Convert::~Convert() { }
+
+Convert	&Convert::operator=( Convert const &conv ) {
+	if (this == &conv )
+		return (*this);
+	return *this;
 }
 
-int isDouble(std::string input) {
-    if (every char is num + dot + there is no "f")
-        return 1;
-    return 0;
+std::string	Convert::checkType(std::string input) const {
+	if (input == "-inf" || input == "+inf" || input == "nan")
+		return "double";
+	else if (input.length() > 3 && input.at(input.length() - 1) == 'f')
+		return "float";
+	else if (input.length() > 2 && input.find('.') != std::string::npos)
+		return "double";
+	else if (input.length() == 1)
+	{
+		char c = input.at(0);
+		if (c >= '0' && c <= '9')
+			return "int";
+		else if (c >= 32 && c <= 126)
+			return "char";
+		else
+			return "invalid";
+	}
+	else
+		return "int";
 }
 
-int isChar(std::string input) {
-    if (its char)
-        return 1;
-    return 0;
+void Convert::conv( char c ) const {
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
 
-class Convert {
-std::string input;
-int         i_input;
-float       f_input;
-double      d_input;
-char        c_input;
+void Convert::conv( int i ) const {
+	if (i > 256 || i < 0)
+		std::cout << "char: impossible" << std::endl;
+	else if (i > 126 || i < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 
-if (argc < 2)
-    std::cout << "Wrong input, write something.." << std::endl;
-else
-    input = argv[1];
-switch {
-    case(isInt(input)):
-        i_input = std::stoi(input);
-        break ;
-    case(isFloat(input)):
-        f_input = std::stof(input);
-        break ;
-    case (isDouble(input)):
-        d_input = std::stod(input);
-        break ;
-    case (isChar(input))
-        c_input = &input[0];
-        break ;
-}
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(i) << std::endl;
 }
 
+void Convert::conv( float f ) const {
+	if (f > 256 || f < 0 || f != f)
+		std::cout << "char: impossible" << std::endl;
+	else if (f > 126 || f < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 
+	if (f > INT_MAX || f < INT_MIN || f != f)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
+}
+
+void Convert::conv( double d ) const {
+	if (d > 256 || d < 0 || d != d)
+		std::cout << "char: impossible" << std::endl;
+	else if (d > 126 || d < 32)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
+
+	if (d > INT_MAX || d < INT_MIN || d != d)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(d) << std::endl;
+
+	if (d > __FLT_MAX__ || d < __FLT_MIN__)
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+}

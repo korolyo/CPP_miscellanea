@@ -1,22 +1,37 @@
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Form::Form( std::string name, const int gradeSign, const int gradeExec ) :
+//Constructors:
+
+Form::Form() : _name("NewForm"), _gradeSign(150), _gradeExec(150), _signed(false) { }
+
+Form::Form( std::string const &name, const int gradeSign, const int gradeExec, std::string const &target ) :
 		_name(name),
 		_gradeSign(gradeSign),
 		_gradeExec(gradeExec),
-		_signed(false) { }
+		_signed(false),
+		_target(target)
+{
+	if (gradeExec > 150 || gradeSign > 150)
+		throw Form::GradeTooLowException();
+	if (gradeExec < 1 || gradeSign < 1)
+		throw Form::GradeTooHighException();
+}
 
+Form::Form( Form const &copy ) :
+		_name(copy._name),
+		_gradeSign(copy._gradeSign),
+		_gradeExec(copy._gradeExec),
+		_signed(copy._signed) { }
+
+//Destructors:
 Form::~Form() { }
 
-Form::Form( Form const &form ) :
-		_name(form._name),
-		_gradeSign(form._gradeSign),
-		_gradeExec(form._gradeExec),
-		_signed(form._signed) { }
-
 std::string Form::getName( void ) const {
-	return this->_name;
+	return _name;
+}
+
+std::string Form::getTarget( void ) const {
+	return _target;
 }
 
 int			Form::getGradeSign( void ) const {
@@ -27,7 +42,7 @@ int		Form::getGradeExec( void ) const {
 	return _gradeExec;
 }
 
-bool		Form::getSigned( void ) {
+bool		Form::isSigned( void ) const {
 	return _signed;
 }
 
@@ -39,20 +54,20 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return "Grade is in it's minimum";
 }
 
-void	Form::beSigned( Bureaucrat &tom ) {
-	int	reqGrade = 0;
-	try {
-		if (tom.getGrade() >= reqGrade)
-			throw Form::GradeTooLowException();
-		this->_signed = true;
-	}
-	catch (GradeTooLowException &ex2) {
-		std::cerr << "Can't sign. Reason: " << ex2.what() << std::endl;
-	}
+const char* Form::FormNotSignedException::what() const throw() {
+	return "Form is not signed";
 }
 
-std::ostream & operator<<( std::ostream & o, Form const & form) {
-	o << form.getName() << ", Form sign grade " << form.getGradeSign();
+void	Form::beSigned( Bureaucrat tom ) {
+	if (tom.getGrade() > _gradeSign)
+		throw Form::GradeTooLowException();
+	else
+		_signed = true;
+}
+
+std::ostream &operator<<( std::ostream &o, Form const &form) {
+	o << form.getName() << " is " << (form.isSigned() ? "signed" : "unsigned");
+	o << ", Form sign grade " << form.getGradeSign();
 	o << ", Form exec grade " << form.getGradeExec() << std::endl;
 	return o;
 }

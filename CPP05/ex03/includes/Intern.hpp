@@ -1,44 +1,19 @@
-#include "includes/Bureaucrat.hpp"
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-Bureaucrat::Bureaucrat() { }
+# include "Form.hpp"
+# include <string>
 
-Bureaucrat::~Bureaucrat() { }
+class	Intern {
 
-Bureaucrat::Bureaucrat( Bureaucrat const &bureaucrat ) {
-	std::cout << "Bureaucrat copy constructor" << std::endl;
-	this->_grade = bureaucrat.getGrade();
-}
+public:
+	Intern();
+	Intern( Intern const &copy );
+	virtual ~Intern();
 
-Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
-	if (this != &bur)
-		_grade = bur.getGrade();
-	return *this;
-}
+	Intern &operator=( Intern const &intern );
 
-std::string Bureaucrat::getName( void ) const {
-	return this->_name;
-}
+	Form	*makeForm( std::string const &formName, std::string const &target ) const;
+};
 
-int			Bureaucrat::getGrade( void ) const {
-	return _grade;
-}
-
-void		Bureaucrat::setGrade( int grade ) {
-	_grade = grade;
-}
-
-void	Bureaucrat::incrementGrade( void ) {
-	this->_grade = getGrade() - 1;
-}
-
-void	Bureaucrat::decrementGrade( void ) {
-	this->_grade = getGrade() + 1;
-}
-
-std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-	std::cout << bureaucrat.getName() << ", bureaucrat grade ";
-	std::cout << bureaucrat.getGrade() << std::endl;
-	o << bureaucrat.getName();
-	return o;
-}
+#endif

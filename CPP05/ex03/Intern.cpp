@@ -1,44 +1,37 @@
-#include "includes/Bureaucrat.hpp"
+#include "Intern.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-Bureaucrat::Bureaucrat() { }
+Intern::Intern() { }
 
-Bureaucrat::~Bureaucrat() { }
-
-Bureaucrat::Bureaucrat( Bureaucrat const &bureaucrat ) {
-	std::cout << "Bureaucrat copy constructor" << std::endl;
-	this->_grade = bureaucrat.getGrade();
+Intern::Intern(Intern const &copy) {
+	*this = copy;
 }
 
-Bureaucrat & Bureaucrat::operator=( Bureaucrat const &bur ) {
-	std::cout << "Bureaucrat copy assigment operator called" << std::endl;
-	if (this != &bur)
-		_grade = bur.getGrade();
+Intern::~Intern() { }
+
+Intern	&Intern::operator=(Intern const &intern) {
+	if (this == &intern)
+		return *this;
 	return *this;
 }
 
-std::string Bureaucrat::getName( void ) const {
-	return this->_name;
-}
+Form	*Intern::makeForm(std::string const &formName, std::string const &target) const {
+	ShrubberyCreationForm shrub(target);
+	RobotomyRequestForm robot(target);
+	PresidentialPardonForm pres(target);
 
-int			Bureaucrat::getGrade( void ) const {
-	return _grade;
-}
+	Form *formArray[] = {&shrub, &robot, &pres};
 
-void		Bureaucrat::setGrade( int grade ) {
-	_grade = grade;
-}
-
-void	Bureaucrat::incrementGrade( void ) {
-	this->_grade = getGrade() - 1;
-}
-
-void	Bureaucrat::decrementGrade( void ) {
-	this->_grade = getGrade() + 1;
-}
-
-std::ostream & operator<<( std::ostream & o, Bureaucrat const & bureaucrat) {
-	std::cout << bureaucrat.getName() << ", bureaucrat grade ";
-	std::cout << bureaucrat.getGrade() << std::endl;
-	o << bureaucrat.getName();
-	return o;
+	for (int i = 0; i <= 2; i++)
+	{
+		if (formName == formArray[i]->getName())
+		{
+			std::cout << "Intern creates " << formName << " form." << std::endl;
+			return formArray[i]->clone();
+		}
+	}
+	std::cout << "Error: Intern doesn't recognize this form." << std::endl;
+	return NULL;
 }
