@@ -1,8 +1,12 @@
 #ifndef ITER_HPP
 # define ITER_HPP
 
-#include <iostream>
+template<typename T>
+void	iter(T *arr, int len, void(*funcArr)(T const &)) {
 
-void	iter(int a, int b, int c);
+	for (int i = 0; i < len; i++){
+		funcArr(arr[i]);
+	}
+}
 
 #endif

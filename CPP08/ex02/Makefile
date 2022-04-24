@@ -2,6 +2,7 @@
 NAME		= MutantStack
 
 SOURCES_LIST	=	main.cpp\
+					MutantStack.tpp
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
