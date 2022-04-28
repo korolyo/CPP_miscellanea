@@ -1,7 +1,7 @@
-#include "includes/Base.hpp"
-#include "includes/A.hpp"
-#include "includes/B.hpp"
-#include "includes/C.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 int main( void ) {
 
@@ -10,8 +10,10 @@ int main( void ) {
     C c;
     Base *p;
 
+	p = generate();
     identify(p);
-    identify(&(*p));
+    identify(*p);
+
+	delete p;
     return 0;
 }
-

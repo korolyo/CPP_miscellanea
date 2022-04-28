@@ -1,5 +1,5 @@
 
-NAME		= Shrubbery
+NAME		= Intern
 
 SOURCES_LIST	=	main.cpp\
 					Bureaucrat.cpp\

@@ -1,13 +1,12 @@
 #ifndef B_HPP
 # define B_HPP
 
-class B : Base {
+# include "Base.hpp"
+
+class B : public Base {
 public:
     B();
     ~B();
-    B & operator=(const B &b);
-    B(const B &b);
-}
+};
 
 #endif
-

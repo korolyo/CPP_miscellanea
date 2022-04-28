@@ -2,15 +2,23 @@
 NAME		=	base
 
 SOURCES_LIST	=	main.cpp\
+					Base.cpp\
+					A.cpp\
+					B.cpp\
+					C.cpp\
 
 CC		= c++
 CFLAGS	=	-Werror -Wall -Wextra -std=c++98 -pedantic-errors
 
 INCLUDES = -I$(HEADERS_DIR)
 
-HEADERS_LIST =
+HEADERS_LIST =	Base.hpp\
+                A.hpp\
+                B.hpp\
+                C.hpp\
 
 HEADERS_DIR	=  ./includes/
+
 HEADERS =	$(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 OBJECTS	=	$(patsubst %.cpp, %.o, $(SOURCES_LIST))

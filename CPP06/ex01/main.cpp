@@ -5,10 +5,16 @@
 
 typedef struct Data
 {
-	std::string 	str1;
-	std::string 	str2;
-	int 			n;
+	char 			c;
+	std::string 	str;
+	int 			i;
 }				Data;
+
+void initStruct(Data *data) {
+	data->c = 'B';
+	data->i = 10;
+	data->str = "String";
+}
 
 uintptr_t   serialize(Data *ptr) {
 	return (reinterpret_cast<uintptr_t>(ptr));
@@ -16,11 +22,33 @@ uintptr_t   serialize(Data *ptr) {
 
 Data* deserialize(uintptr_t raw)
 {
-	return (reinterpret_cast<Data *>(ray));
+	return (reinterpret_cast<Data *>(raw));
 }
 
 int main( void )
 {
-    yo;
-    return 0;
+
+	Data		data;
+	Data*		ptr;
+	Data*		des_ptr;
+	uintptr_t	raw;
+
+	ptr = &data;
+	initStruct(&data);
+
+	std::cout << "Raw structure" << std::endl;
+	std::cout << ptr->i << std::endl;
+	std::cout << ptr->c << std::endl;
+	std::cout << ptr->str << std::endl << std::endl;
+	raw = serialize(ptr);
+	des_ptr = deserialize(raw);
+	std::cout << "After using serialize and deserialize" << std::endl;
+	std::cout << des_ptr->i << std::endl;
+	std::cout << des_ptr->c << std::endl;
+	std::cout << des_ptr->str << std::endl << std::endl;
+	std::cout << "Compare two pointers" << std::endl;
+	std::cout << ptr << std::endl;
+	std::cout << des_ptr << std::endl;
+
+	return 0;
 }

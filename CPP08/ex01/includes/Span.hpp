@@ -2,8 +2,7 @@
 # define SPAN_HPP
 
 #include <iostream>
-#include <algorithm>
-#include <vector>
+#include <set>
 
 class Span {
 
@@ -19,8 +18,22 @@ public:
 	int		shortestSpan();
 	int		longestSpan();
 
+	class ImpossibleToAddException : public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
+	};
+
+	class NoValidDistanceException: public std::exception
+	{
+	public:
+		virtual const char* what() const throw();
+	};
+
 private:
+	Span();
 	unsigned int _N;
+	std::set<int> _set;
 
 };
 
